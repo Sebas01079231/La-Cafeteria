@@ -1,0 +1,103 @@
+@use 'bases/variables' as v;
+@use 'bases/mixins' as m;
+
+.header{
+    padding: 8rem 0;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &::before{
+        content: '';
+        background-color: v.$negro;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: .6;
+    }
+
+    .contenido-header{
+        position: relative;
+    }
+
+    @include m.tablet{ 
+        min-height: 70rem;
+        padding: 5rem 0;
+    }
+}
+
+
+// header de cada pagina
+.notavif.notwebp .header-inicio{
+    background-image: url(../img/header_inicio.jpg);
+}
+.webp.notavif .header-inicio{
+    background-image: url(../img/header_inicio.webp);
+}
+.avif .header-inicio{
+    background-image: url(../img/header_inicio.avif);
+}
+
+
+
+.notavif.notwebp .header-nosotros{
+    background-image: url(../img/header_nosotros.jpg);
+}
+.webp.notavif .header-nosotros{
+    background-image: url(../img/header_nosotros.webp);
+}
+.avif .header-nosotros{
+    background-image: url(../img/header_nosotros.avif);
+}
+
+
+.notavif.notwebp .header-menu{
+    background-image: url(../img/header_proceso.jpg);
+}
+.webp.notavif .header-menu{
+    background-image: url(../img/header_proceso.webp);
+}
+.avif .header-menu{
+    background-image: url(../img/header_proceso.avif);
+}
+
+
+
+.notavif.notwebp .header-contacto{
+    background-image: url(../img/header_menu.jpg);
+    background-position: right;
+}
+.webp.notavif .header-contacto{
+    background-image: url(../img/header_menu.webp);
+    background-position: right;
+}
+.avif .header-contacto{
+    background-image: url(../img/header_menu.avif);
+    background-position: right;
+}
+
+
+
+.notavif.notwebp .header-galeria{
+    background-image: url(../img/header_galeria.jpg);
+}
+.webp.notavif .header-galeria{
+    background-image: url(../img/header_galeria.webp);
+}
+.avif .header-galeria{
+    background-image: url(../img/header_galeria.avif);
+}
+
+
+
+
+.notavif.notwebp .header-proceso{
+    background-image: url(../img/header_contacto.jpg);
+}
+.webp.notavif .header-proceso{
+    background-image: url(../img/header_contacto.webp);
+}
+.avif .header-proceso{
+    background-image: url(../img/header_contacto.avif);
+}

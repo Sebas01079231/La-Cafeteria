@@ -1,0 +1,10 @@
+@use 'bases/variables' as v;
+.text-center{
+    text-align: center;
+}
+.bg-primario{
+    background-color: v.$primario;
+}
+.menu--padding{
+    padding-bottom: 0;
+}

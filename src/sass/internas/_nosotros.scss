@@ -1,0 +1,36 @@
+@use 'bases/variables' as v; 
+@use 'bases/mixins' as m;
+
+.contenido_nosotros{
+
+    @include m.tablet{ 
+        @include m.grid(2,2rem,0);
+        margin-top: v.$separacion;
+    }
+    .nosotros_img{
+        margin: v.$separacion 1rem;
+        @include m.tablet{ 
+            margin: 0 2rem;
+        }
+        
+        img{
+            width: 100%;
+            border: 3rem solid v.$blanco;
+            transform: rotate(-6deg);
+            box-shadow: 7px 7px 9px -5px rgba(0,0,0,0.39);
+            object-fit: cover;
+        }
+    }
+
+    .nosotros_info{
+        p{
+            margin: 1rem 0;
+        }
+        blockquote{
+            margin-left: 0;
+            padding: 1rem;
+            border-left: 5px solid v.$primario;
+            font-size: 2rem;
+        }
+    }
+}

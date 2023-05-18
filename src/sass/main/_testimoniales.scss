@@ -1,0 +1,39 @@
+@use 'bases/variables' as v; 
+@use 'bases/mixins' as m;
+
+.testimoniales{
+    margin-top: -10rem;
+    background-color: v.$blanco;
+    padding: 10rem 2rem;
+
+    p{
+        margin-bottom: v.$separacion;
+    }
+
+}
+.grid_testimonial{
+    @include m.tablet{ 
+        @include m.grid(2, 2rem, 0)
+    }
+}
+.testimonio{
+    background-color: v.$cafeClaro;
+    padding: 2rem 4rem;
+    margin: 0 auto 2rem auto;
+    max-width: 50rem;
+    border-radius: 1rem;
+
+    @include m.tablet{ 
+        margin: 0 auto;
+    }
+
+    p{
+        margin: 2rem 0;
+    }
+    .autor{
+        text-align: right;
+        font-size: 2.4rem;
+        color: v.$primario;
+        font-family: v.$fuenteCursiva;
+    }
+}

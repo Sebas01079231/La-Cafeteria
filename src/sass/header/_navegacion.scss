@@ -1,0 +1,66 @@
+@use 'bases/variables' as v;
+@use 'bases/mixins' as m;
+
+.nav-principal{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+
+    @media (max-width: 767px) {
+        &.nav_phone{
+            position: absolute;
+            top: -100%;
+            background-color: v.$primario;
+            width: 100%;
+            padding: 10rem;
+            margin: 0;
+            margin-top: -8rem;
+            transition: all 0.60s ease-in-out;
+            a{
+                font-family: v.$fuenteCursiva;
+            }
+        }
+    }
+    
+    a {
+        color: v.$blanco;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 2rem;
+
+        &:hover{
+            color: v.$secundario;
+        }
+
+        &.activo{
+            color: v.$secundario;
+        }
+    }
+
+    &.activo-nav{
+
+        top: 0;
+    }
+
+    @include m.tablet{ 
+        display: flex;
+        flex-direction: row;
+        margin-top: unset;
+    }
+    
+}
+
+.icon-nav{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -4rem;
+    margin-right: 1rem;
+    @include m.tablet{ 
+        display: none;
+    }
+}

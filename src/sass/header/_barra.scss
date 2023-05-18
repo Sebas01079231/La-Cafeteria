@@ -1,0 +1,24 @@
+@use 'bases/variables' as v;
+@use 'bases/mixins' as m;
+
+.barra{    
+    @include m.tablet{ 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.logo{
+    margin: 0 auto;
+    width: 60%;
+
+    img{
+        margin: 0 auto;
+    }
+
+    @include m.tablet{ 
+        width: 20rem;
+        margin: unset;
+    }
+}

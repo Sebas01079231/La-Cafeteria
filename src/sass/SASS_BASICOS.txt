@@ -1,0 +1,146 @@
+SASS -BASICOS
+    $ -> variables en sass
+    _  -> 
+        si un archivo de sass tiene "_" al principio, significa que va hacer incluido en otro, en sass se puede dividir tu codigo en archivos.
+
+    @import  -> 
+        se utiliza para incluir el contenido de un archivo scss en otro archivo scss.
+
+    @use -> 
+        es la nueva forma que remplaza lo que hace import.
+
+    @forward -> 
+        -incluye los archivos scss dentro de un scss, igual que @import y @use 
+        
+        -con la diferencia que solo los incluye, no los utiliza o ejecuta. 
+        
+        -Estos @forward SE INCLUYEN en un archivo llamado _index.scss, que funciona como indice. 
+        
+        -Todos los archivos deben ser cargardos ahi (header,main,secciones,etc) para posteriormente llamar ese _index al scss principal con un @use. 
+        
+        -Esto evita que nuestro archivo principal scss se llene de archivos. 
+        
+        -Como nuestro archivo se llama _index.scss, sass lo busca automaticamente y sabe que en ese archivo estan cargados todos los @forward, de manera que con solo especificar la carpeta donde se encuentra ese _index es suficiente.
+
+    Importar Variables en Otros Archivos ->
+    
+        - para importar variables y utilizarlas en otro archivo donde no fueron declaradas, es necesario que CARGUEMOS el ARCHIVO donde esten usando un @use.
+        - Es necesario que cuando usemos una variable en alguna propiedad, lo declaremos primero poniendo el nombre del archivo que importamos, seguido de un punto y del nombre de la variable, ejemplo:
+
+            body {
+                font-family: variables.$fuente_principal;
+            }
+        
+        -Suele ser muy tedioso poner el nombre completo del archivo que importamos con el @use, por lo que podemos PONERLE un ALIAS en el @use de la siguiente forma: 
+            
+            @use 'variables' as v;
+        
+        -de esa forma utilizamos sus variables de la siguiente forma: 
+
+            body {
+                font-family: v.$fuente_principal;
+            }
+
+    -sintaxis anidacion en sass ->
+        
+        dentro de sass, se pueden anidar selectores, de esta manera se declara que un elemento hijo esta dentro de un  padre, en css se veria asi:
+            
+            .body .header{
+            }
+
+        en sass:
+            .body {
+                .header{
+                }
+            }
+
+        ahora bien, esto es util pero que si quiero declarar pseudoelemento en donde el texto va junto, sea en css
+
+            .body::before{
+            }
+
+        en sass: 
+            
+            .body{
+                &::before{
+                }
+            }
+        el ampersang indica que esto va junto, es decir sin espacios, ya que si hubiera espacio se estaria refiriendo a un selector hijo
+
+    -identificar un archivo con @use fuera de la carpeta ->
+        
+        queremos importar las variables de un archivo que dejamos en otra carpeta?. solo declaramos la ruta como siempre: 
+            
+            @use '../bases/variables'
+
+        esa es una forma, pero nos podemos ahorrar los '../' y las rutas especificas, ya que sass es suficientemente inteligente que reconoce la carpeta sin decirle su direccion entera.
+
+            @use 'bases/variables'
+        
+    @mixin ->
+        son una función que permite definir un conjunto de estilos que pueden ser REUTILIZADOS en diferentes partes de un archivo Sass o en otros archivos. Los mixins en Sass se definen utilizando la palabra clave "@mixin" seguida de un nombre y un conjunto de estilos.
+
+        -se insertan en los archivos igual con @use
+
+            @use 'bases/mixins' as m;
+            
+        -Luego, para utilizar el mixin en un selector CSS, se utilizaría la palabra clave "@include"
+
+    @content ->
+        en Sass se utiliza dentro de un mixin para permitir la inserción de un bloque de código en el lugar donde se llama al mixin.
+
+        Cuando se utiliza la directiva @content dentro de un mixin, cualquier bloque de código que se pase como argumento al mixin se insertará en el lugar donde se encuentra la directiva @content. Esto permite que el mixin tenga una estructura más flexible y se pueda personalizar su contenido en cada uso.
+        declaracion:
+                @mixin telefono {
+                    @media (min-width: 480px){
+                        @content;
+                    }
+                }
+        en un uso:
+                @include m.telefono{
+                    padding: 2rem 0;
+                }
+
+    Sass:math ->
+        
+        es un módulo integrado en Sass que proporciona funciones matemáticas avanzadas que se pueden utilizar en las hojas de estilo Sass. Con sass:math, es posible realizar operaciones aritméticas y trigonométricas, calcular raíces cuadradas y exponenciales, y redondear números, entre otras operaciones.
+
+        para agregar es lo mismo que todas:
+
+                @use 'sass:math';
+
+    Parametros en un mixin ->
+
+        Suelen utilizarse para no establecer un valor fijo dentro de un mixin, un ejemplo es cuando queremos un mixin de un grid: 
+
+            @mixin grid( $columnas, $espaciado) {
+                display: grid;
+                grid-template-columns: repeat($columnas, 1fr);
+                column-gap: $espaciado;
+            }
+
+        como las columnas y el gap no siempre van a ser los mismos en unos casos, es mejor hacerlos variables, de manera que al usarlos seria de la siguiente forma:
+
+            @include m.grid(2, 2rem);
+
+    @extend ->
+    
+        se utiliza para heredar las propiedades de un selector a otro.
+
+        Cuando usas @extend, le estás diciendo a Sass que tome todas las propiedades de un selector y las agregue a otro selector. De esta manera, puedes evitar repetir las mismas propiedades en varios selectores y mantener tu código más limpio y mantenible.
+
+            h2{
+                font-size: 3.6rem;
+                color: v.$primario;
+                span{
+                    color: v.$secundario;
+                    font-size: 1.8rem;
+                    display: block;
+                }
+            }
+            .heading-blanco{
+                @extend h2;
+                color: v.$blanco;
+            }
+
+

@@ -1,0 +1,43 @@
+@use 'bases/variables' as v; 
+@use 'bases/mixins' as m;
+
+
+.footer{
+    background-color: v.$primario;
+}
+.footer_contenido{
+    @include m.tablet{ 
+        @include m.grid(3, 2rem, 0);
+    }
+    background-color: v.$blanco;
+    padding: 5rem;
+}
+.footer_box{
+    text-align: center;
+    font-family: v.$fuenteCursiva;
+    margin-bottom: 5rem;
+    h3{
+        color: v.$secundario;
+        font-size: 2.5rem;
+        font-family: v.$fuenteCursiva;
+        margin: 0;
+    }
+    a,
+    p{
+        font-size: 2rem;
+        // line-height: 1;
+        color: v.$negro;
+        margin: 0;
+    }
+    @include m.tablet{ 
+        margin-bottom: 0;
+    }
+}
+.copyright{
+    text-align: center;
+    margin: 0;
+    padding: 2rem;
+    color: v.$blanco;
+    font-family: v.$fuenteCursiva;
+    font-size: 2rem;
+}

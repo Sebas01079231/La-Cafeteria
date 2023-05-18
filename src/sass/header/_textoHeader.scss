@@ -1,0 +1,20 @@
+@use 'bases/variables' as v; 
+@use 'bases/mixins' as m;
+
+
+.texto-header{
+    color: v.$blanco;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10rem;
+    line-height: 1.5;
+    h1{
+
+        font-size: 3.5rem;
+        @include m.tablet{ 
+            font-size: 4rem;  
+        }
+    }
+
+}
+

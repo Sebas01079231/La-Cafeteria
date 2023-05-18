@@ -1,0 +1,32 @@
+@use 'bases/variables' as v; 
+@use 'bases/mixins' as m;
+.notavif.notwebp .menu_texto{
+    background-image: url(../img/cafe.jpg);
+}
+.webp.notavif .menu_texto{
+    background-image: url(../img/cafe.webp);
+}
+.avif .menu_texto{
+    background-image: url(../img/cafe.avif);
+}
+.menu_texto{
+    margin-top: v.$separacion;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center bottom;
+    aspect-ratio: 3 / 6.2;
+
+    @include m.telefono{ 
+        aspect-ratio: 3/4;
+    }
+    @include m.tablet{ 
+        @include m.grid(2, v.$separacion, 0);
+        background-size: 40%;
+        aspect-ratio: 16 / 6;
+        background-position: bottom right;
+    }
+    p{
+        font-size: 1.8rem;
+    }
+}
+
