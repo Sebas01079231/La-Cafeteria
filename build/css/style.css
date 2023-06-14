@@ -228,7 +228,7 @@ h3 {
     padding: 10rem;
     margin: 0;
     margin-top: -8rem;
-    transition: all 0.6s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .nav-principal.nav_phone a {
     font-family: "Bona Nova", serif;
